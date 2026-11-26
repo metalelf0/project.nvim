@@ -274,11 +274,11 @@ function M.root_included(dir)
       end
 
       local matches = match(dir, pattern)
-      if not matches then
+      if matches then
+        if not excluded then
+          return dir, ('pattern %s'):format(pattern)
+        end
         break
-      end
-      if not excluded then
-        return dir, ('pattern %s'):format(pattern)
       end
     end
 
